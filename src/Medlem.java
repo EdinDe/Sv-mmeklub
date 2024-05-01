@@ -1,4 +1,4 @@
-public class Medlemmer {
+public class Medlem {
 
     String navn;
     String køn;
@@ -8,7 +8,7 @@ public class Medlemmer {
     boolean juniorEllerSenior;
     boolean motionistEllerKonku;
 
-    public Medlemmer(String navn, String køn, int fødselsDato, int telefonNummer, String medlemsType, boolean juniorEllerSenior, boolean mosionistEllerKonku) {
+    public Medlem(String navn, String køn, int fødselsDato, int telefonNummer, String medlemsType, boolean juniorEllerSenior, boolean mosionistEllerKonku) {
         this.navn = navn;
         this.køn = køn;
         this.fødselsDato = fødselsDato;
