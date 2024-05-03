@@ -81,9 +81,9 @@ import java.util.Scanner;
             }
 
 
-            controller.addMovie(name, director, year, lengthInMinutes, genre, isInColour);
+            controller.addMedlem(navn, køn, fødselsDato, telefonNummer, medlemsType, juniorEllerSenior, motionistEllerKonku);
 
-            System.out.println("\nFilmen blev tilføjet");
+            System.out.println("\nMedlem blev tilføjet");
 
 
 
