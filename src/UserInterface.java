@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 
 
-            System.out.println("\nVelkommen til min filmsamling");
+            System.out.println("\nSvømmeklub Database");
 
             while (tal != sentinel) {
                 System.out.println("\n1. tilføj en medlem");
@@ -34,7 +34,7 @@ import java.util.Scanner;
                     addMedlem();
 
                 } else if (tal == 2) {
-                    System.out.println("\nListe af film:\n");
+                    System.out.println("\nMedlemsliste:\n");
                     System.out.println(controller.instanceMovieCollection.showMovieCollectionSortedByTitle());
                 } else if (tal == 3) {
                     searchMovie();
@@ -50,26 +50,36 @@ import java.util.Scanner;
         }
         private void addMedlem() {
             System.out.println("Angiv navn på ny medlem:");
-            String name = scanner.nextLine();
+            String navn = scanner.nextLine();
 
-            System.out.println("Angiv filminstruktørens navn");
-            String director = scanner.nextLine();
+            System.out.println("Angiv medlems køn");
+            String køn = scanner.nextLine();
 
-            System.out.println("Angiv det år filmen blev udgivet");
-            int year = scanner.nextInt();
+            System.out.println("Angiv medlems fødselsår");
+            int fødselsDato = scanner.nextInt();
 
-            System.out.println("Er filmen farvet eller ej");
-            boolean isInColour = false;
-            String colorOrNot = scanner.next().toLowerCase();
-            if (colorOrNot.equals("ja")) {
-                isInColour = true;
+
+            System.out.println("Angiv medlems telefonnummer");
+            int telefonNummer = scanner.nextInt();
+
+            System.out.println("Angiv medlems medlemstype");
+            String medlemsType = scanner.nextLine();
+
+            System.out.println("Er medlem en junior eller senior?");
+            boolean juniorEllerSenior = false;
+            String seniorEllerJunior = scanner.next().toLowerCase();
+            if (seniorEllerJunior.equals("junior")) {
+                juniorEllerSenior = true;
             }
 
-            System.out.println("Angiv filmens spilletid");
-            int lengthInMinutes = scanner.nextInt();
+            System.out.println("Er medlem motionist eller konkurrencesvømmer");
+            boolean motionistEllerKonku = false;
+            String konkuEllerMotionist = scanner.next().toLowerCase();
+            if(konkuEllerMotionist.equals("motionist")) {
+                motionistEllerKonku = true;
 
-            System.out.println("Angiv filmens genre");
-            String genre = scanner.next();
+            }
+
 
             controller.addMovie(name, director, year, lengthInMinutes, genre, isInColour);
 
