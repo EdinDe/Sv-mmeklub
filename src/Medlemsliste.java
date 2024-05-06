@@ -7,6 +7,7 @@ public class Medlemsliste {
 
     public ArrayList<Medlem> medlemListe;
 
+
     public Medlemsliste() {
         this.medlemListe = new ArrayList<>();
     }
