@@ -1,3 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -5,10 +9,34 @@ import java.util.Comparator;
 public class Medlemsliste {
 
 
-    public ArrayList<Medlem> medlemListe;
+    public static ArrayList<Medlem> medlemListe;
 
     public Medlemsliste() {
-        this.medlemListe = new ArrayList<>();
+        medlemListe = new ArrayList<>();
+    }
+
+    public void saveMedlemsliste() throws IOException {
+        File file = new File("medlemsliste.csv");
+        FileWriter fw = new FileWriter(file);
+        BufferedWriter bw = new BufferedWriter(fw);
+
+        // Write CSV header
+
+
+        // Write each movie to the CSV file
+        for (Medlem medlem : medlemListe) {
+            bw.write(String.format("%s, %s,%d,%d, %s, %b, %b",
+                    medlem.getNavn(), medlem.getKøn(), medlem.getFødselsDato(),
+                    medlem.getTelefonNummer(), medlem.getMedlemsType(),
+                    medlem.isJuniorEllerSenior(),medlem.isMotionistEllerKonku()));
+            bw.newLine();
+        }
+
+        // Close BufferedWriter and FileWriter
+        bw.close();
+        fw.close();
+
+        System.out.println("Opdateret medlemsinfo er nu gemt! :)");
     }
 
     public void addMedlem(String navn, String køn, int fødselsdato, int telefonNummer, String medlemstype, boolean juniorEllerSenior, boolean motionistEllerKonku) {
@@ -62,6 +90,10 @@ public class Medlemsliste {
         sorterMedlemmer();
         return showMedlemsliste();
     }
+    public static void setMedlemListe(ArrayList<Medlem> nyMedlemListe) {
+        medlemListe = nyMedlemListe;
+    }
+
 
     public ArrayList<Medlem> getMedlemListe() {
         return medlemListe;

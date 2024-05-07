@@ -1,17 +1,22 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
 
-    public class UserInterface {
+public class UserInterface {
         Controller medlem = new Controller();
+        Medlemsliste ml = new Medlemsliste();
 
 
         Scanner scanner = new Scanner(System.in);
 
         public void start() {
-            int sentinel = 2;
+            int sentinel = 5;
             int tal = 0;
+            String filename = "medlemsliste.csv";
+            ArrayList<Medlem> loadedData = Filehandler.loadDataFromCSV(filename);
+            Medlemsliste.setMedlemListe(loadedData);
 
 
 
@@ -24,6 +29,7 @@ import java.util.Scanner;
                 System.out.println("4. Sorter medlemsliste");
                 System.out.println("5. Rediger medlem");
                 System.out.println("6. Se forventet kontigent");
+
                 System.out.println("7. Afslut program");
 
 
@@ -35,15 +41,17 @@ import java.util.Scanner;
 
                 } else if (tal == 2) {
                     System.out.println("\nMedlemsliste:\n");
-                    System.out.println(controller.instanceMovieCollection.showMovieCollectionSortedByTitle());
+                    ml.showMedlemsliste();
                 } else if (tal == 3) {
-                    searchMovie();
+
                 }else if (tal==4){
-                    sortByProberty();
+
                 }else if (tal==5) {
-                    editMovie();
-                }else if(tal==6){
                     break;
+
+                }else if(tal==7){
+
+
                 }
 
             }
@@ -63,6 +71,7 @@ import java.util.Scanner;
             int telefonNummer = scanner.nextInt();
 
             System.out.println("Angiv medlems medlemstype");
+            scanner.nextLine();
             String medlemsType = scanner.nextLine();
 
             System.out.println("Er medlem en junior eller senior?");
@@ -81,7 +90,7 @@ import java.util.Scanner;
             }
 
 
-            controller.addMedlem(navn, køn, fødselsDato, telefonNummer, medlemsType, juniorEllerSenior, motionistEllerKonku);
+            Controller.addMedlem(navn, køn, fødselsDato, telefonNummer, medlemsType, juniorEllerSenior, motionistEllerKonku);
 
             System.out.println("\nMedlem blev tilføjet");
 
