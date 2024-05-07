@@ -11,6 +11,7 @@ public class Medlemsliste {
 
     public static ArrayList<Medlem> medlemListe;
 
+
     public Medlemsliste() {
         medlemListe = new ArrayList<>();
     }
