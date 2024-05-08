@@ -59,13 +59,21 @@ public class Medlemsliste {
         }
     }
 
-    public String showMedlemsliste() {
+   /* public String showMedlemsliste() {
         String resultat = "";
         for (Medlem medlem : medlemListe) {
             resultat += medlem.toString() + "\n\n";
         }
-        return resultat.toString();
-    }
+        return resultat;
+    }*/
+   public String showMedlemsliste() {
+       StringBuilder resultat = new StringBuilder();
+       for (Medlem medlem : medlemListe) {
+           resultat.append(medlem).append("\n\n");
+       }
+       return resultat.toString();
+   }
+
 
     public ArrayList<Medlem> søgMedlem (String navn) {
         ArrayList<Medlem> søgResultat = new ArrayList<>();
