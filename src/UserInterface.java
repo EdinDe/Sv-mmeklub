@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class UserInterface {
         Controller ml = new Controller();
+        Medlemsliste saver = new Medlemsliste();
 
 
         Scanner scanner = new Scanner(System.in);
@@ -13,11 +14,10 @@ public class UserInterface {
         public void start() {
             int sentinel = 5;
             int tal = 0;
-
             String filename = "medlemsliste.csv";
             ArrayList<Medlem> loadedData = Filehandler.loadDataFromCSV(filename);
             Medlemsliste.setMedlemListe(loadedData);
-
+            Controller ctrl  = new Controller();
 
 
             System.out.println("\nSvømmeklub Database");
@@ -40,16 +40,19 @@ public class UserInterface {
                     addMedlem();
 
                 } else if (tal == 2) {
-                    System.out.println("\nMedlemsliste:\n");
-                    ml.showMedlemsliste();
-
+                    System.out.println(Controller.showMedlemsliste());
                 } else if (tal == 3) {
 
                 }else if (tal==4){
 
-
                 }else if (tal==5) {
-                    break;
+                    try {
+                        saver.saveMedlemsliste();
+                        break;
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
 
                 }else if(tal==7){
 

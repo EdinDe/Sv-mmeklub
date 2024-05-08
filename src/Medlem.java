@@ -73,4 +73,9 @@ public class Medlem {
     public void setMotionistEllerKonku(boolean motionistEllerKonku) {
         this.motionistEllerKonku = motionistEllerKonku;
     }
+    @Override
+    public String toString() {
+        return "Navn: " + navn + ", Køn: " + køn + ", Fødselsdato: " + fødselsDato + ", Telefonnummer: " + telefonNummer + ", Medlemstype: " + medlemsType + ", Junior/Senior: " + (juniorEllerSenior ? "Junior" : "Senior") + ", Motionist/Konkurrence: " + (motionistEllerKonku ? "Motionist" : "Konkurrence");
+    }
 }
+
