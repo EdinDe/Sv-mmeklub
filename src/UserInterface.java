@@ -54,8 +54,8 @@ public class UserInterface {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-
-
+                }else if (tal==6){
+                    saver.beregnTotalIndbetalteKontingenter();
                 }else if(tal==7){
 
 
@@ -128,7 +128,7 @@ public class UserInterface {
         System.out.println(" Junior eller Senior");
         boolean newJuniorEllerSenior = false;
         String juniorNot = scanner.next().toLowerCase();
-        if (juniorNot.equals("Junior") || juniorNot.equals("Senior")) {
+        if (juniorNot.equals("junior") || juniorNot.equals("senior")) {
             newJuniorEllerSenior = true;
         }
         scanner.nextLine();
@@ -136,7 +136,7 @@ public class UserInterface {
         System.out.println("Motionist eller Konkurrencesvømmer");
         boolean newMotionistEllerKonku = false;
         String motionistNot = scanner.next().toLowerCase();
-        if (motionistNot.equals("Motionist") || motionistNot.equals("Konkurrencesvømmer")) {
+        if (motionistNot.equals("motionist") || motionistNot.equals("Konkurrencesvømmer")) {
             newMotionistEllerKonku = true;
         }
         scanner.nextLine();

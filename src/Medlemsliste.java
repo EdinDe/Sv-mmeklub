@@ -2,9 +2,13 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
+import java.time.Period;
+
 
 public class Medlemsliste {
 
@@ -26,7 +30,7 @@ public class Medlemsliste {
 
         // Write each movie to the CSV file
         for (Medlem medlem : medlemListe) {
-            bw.write(String.format("%s, %s,%d,%d, %s, %b, %b",
+            bw.write(String.format("%s,%s,%d,%d,%s,%b,%b",
                     medlem.getNavn(), medlem.getKøn(), medlem.getFødselsDato(),
                     medlem.getTelefonNummer(), medlem.getMedlemsType(),
                     medlem.isJuniorEllerSenior(),medlem.isMotionistEllerKonku()));
@@ -110,6 +114,63 @@ public class Medlemsliste {
         return medlemListe;
     }
 
+    double totalIndbetalteKontingenter;
+
+
+    public void Kontingent() {
+        this.totalIndbetalteKontingenter = 0.0;
+
+    }
+
+
+    public void beregnTotalIndbetalteKontingenter() {
+        if (medlemListe == null || medlemListe.isEmpty()) {
+            System.out.println("Ingen medlemmer i listen");
+            return;
+        }
+
+
+
+
+        for (Medlem medlem : medlemListe) {
+            // Extracting year, month, and day components from the integer
+            int fødselsDato = medlem.getFødselsDato();
+            int year = fødselsDato % 10000; // Extracting year (last four digits)
+            fødselsDato /= 10000; // Removing year from fødselsDato
+
+            // Extracting month and day while ensuring two digits with leading zeros if needed
+            int month = Integer.parseInt(String.format("%02d", fødselsDato % 100)); // Extracting month
+            int day = Integer.parseInt(String.format("%02d", fødselsDato / 100)); // Extracting day
+
+            // Calculate the age
+            LocalDate fødselsDatoLocalDate = LocalDate.of(year, month, day);
+            int age = Period.between(fødselsDatoLocalDate, LocalDate.now()).getYears();
+
+
+
+            if (medlem.medlemsType.equals("aktiv")) {
+                if (!medlem.juniorEllerSenior&& age <=60) {
+                    totalIndbetalteKontingenter += 1600;
+                } else if (age >= 60) {
+                    totalIndbetalteKontingenter += 1600 * 0.75; // 25% rabat for seniorer
+                } else {
+                    totalIndbetalteKontingenter += 1000; // Junior member fee
+                }
+            } else {
+                totalIndbetalteKontingenter += 500; // Kontingent for passivt medlemskab
+            }
+        }
+        System.out.println("Det samlede indbetalte kontingent: " + totalIndbetalteKontingenter);
+    }
+
+
+    public void visMedlemmerIRestance() {
+        for (Medlem medlem : medlemListe) {
+        }
+
+        System.out.println("Liste over medlemmer i restance:");
+
+    }
 
 
 
