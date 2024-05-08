@@ -73,10 +73,12 @@ public class Medlemsliste {
             if (med.getNavn().toLowerCase().contains(navn.toLowerCase())) {
                 søgResultat.add(med);
                 //break;
+                }
             }
+            return søgResultat;
         }
-        return søgResultat;
-    }
+
+
 
     public void sorterMedlemmer () {
         Collections.sort(medlemListe, new Comparator<Medlem>() {

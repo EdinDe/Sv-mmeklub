@@ -5,8 +5,7 @@ import java.util.Scanner;
 
 
 public class UserInterface {
-        Controller medlem = new Controller();
-        Medlemsliste ml = new Medlemsliste();
+        Controller ml = new Controller();
 
 
         Scanner scanner = new Scanner(System.in);
@@ -14,6 +13,7 @@ public class UserInterface {
         public void start() {
             int sentinel = 5;
             int tal = 0;
+
             String filename = "medlemsliste.csv";
             ArrayList<Medlem> loadedData = Filehandler.loadDataFromCSV(filename);
             Medlemsliste.setMedlemListe(loadedData);
@@ -42,9 +42,11 @@ public class UserInterface {
                 } else if (tal == 2) {
                     System.out.println("\nMedlemsliste:\n");
                     ml.showMedlemsliste();
+
                 } else if (tal == 3) {
 
                 }else if (tal==4){
+
 
                 }else if (tal==5) {
                     break;
@@ -97,7 +99,52 @@ public class UserInterface {
 
 
 
+
         }
+    public void redigerMedlemmer () {
+        System.out.println("Hvem vil du redigere i");
+        String name = scanner.nextLine();
+
+        System.out.println("Nyt navn på medlemmet");
+        String newNavn = scanner.nextLine();
+
+        System.out.println("Nyt køn");
+        String newKøn = scanner.nextLine();
+
+        System.out.println("Ny fødselsdato");
+        String newFødselsdato = scanner.nextLine();
+
+        System.out.println("Nyt telefonnummer");
+        String newTelefonnummer = scanner.nextLine();
+
+        System.out.println("Ny medlemstype");
+        String newMedlemstype = scanner.nextLine();
+
+        System.out.println(" Junior eller Senior");
+        boolean newJuniorEllerSenior = false;
+        String juniorNot = scanner.next().toLowerCase();
+        if (juniorNot.equals("Junior") || juniorNot.equals("Senior")) {
+            newJuniorEllerSenior = true;
+        }
+        scanner.nextLine();
+
+        System.out.println("Motionist eller Konkurrencesvømmer");
+        boolean newMotionistEllerKonku = false;
+        String motionistNot = scanner.next().toLowerCase();
+        if (motionistNot.equals("Motionist") || motionistNot.equals("Konkurrencesvømmer")) {
+            newMotionistEllerKonku = true;
+        }
+        scanner.nextLine();
+
+
+
+        ml.redigerMedlemmer(name, newNavn, newKøn, newFødselsdato, newTelefonnummer, newMedlemstype, newJuniorEllerSenior, newMotionistEllerKonku);
+
+        System.out.println("Medlemmet blev redigeret");
+
+    }
+
+
 
 
 }

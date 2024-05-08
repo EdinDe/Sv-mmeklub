@@ -30,9 +30,29 @@ public class Controller {
         return nyMedlemsListe.showMedlemsliste();
     }
 
-    public static ArrayList<Medlem> søgMedlem(String søg) {
-        return nyMedlemsListe.søgMedlem(søg);
+    public static ArrayList<Medlem> søgMedlem(String search) {
+        return nyMedlemsListe.søgMedlem(search);
     }
 
+    public void redigerMedlemmer (String navn, String newNavn, String newKøn, String newFødselsdato, String newTelefonnummer, String newMedlemstype, boolean newJuniorEllerSenior, boolean newMotionistEllerKonku) {
+        ArrayList<Medlem> medlemmerAtRedigere = nyMedlemsListe.søgMedlem(navn);
+        if (!medlemmerAtRedigere.isEmpty()) {
+            Medlem medlemAtRedigere = medlemmerAtRedigere.get(0);
+
+            medlemAtRedigere.setNavn(newNavn);;
+            medlemAtRedigere.setKøn(newKøn);
+            medlemAtRedigere.setFødselsDato(newFødselsdato);
+            medlemAtRedigere.setTelefonNummer(newTelefonnummer);
+            medlemAtRedigere.setMedlemsType(newMedlemstype);
+            medlemAtRedigere.setJuniorEllerSenior(newJuniorEllerSenior);
+            medlemAtRedigere.setMotionistEllerKonku(newMotionistEllerKonku);
+        } else {
+            System.out.println("Der blev ikke fundet et medlem med navnet " + navn);
+        }
+    }
 }
+
+
+
+
 

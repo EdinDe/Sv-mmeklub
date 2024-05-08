@@ -38,16 +38,16 @@ public class Medlem {
         return fødselsDato;
     }
 
-    public void setFødselsDato(int fødselsDato) {
-        this.fødselsDato = fødselsDato;
+    public void setFødselsDato(String fødselsDato) {
+        this.fødselsDato = Integer.parseInt(fødselsDato);
     }
 
     public int getTelefonNummer() {
         return telefonNummer;
     }
 
-    public void setTelefonNummer(int telefonNummer) {
-        this.telefonNummer = telefonNummer;
+    public void setTelefonNummer(String telefonNummer) {
+        this.telefonNummer = Integer.parseInt(telefonNummer);
     }
 
     public String getMedlemsType() {
