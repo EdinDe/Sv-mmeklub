@@ -17,7 +17,7 @@ public class UserInterface {
             String filename = "medlemsliste.csv";
             ArrayList<Medlem> loadedData = Filehandler.loadDataFromCSV(filename);
             Medlemsliste.setMedlemListe(loadedData);
-            Controller ctrl  = new Controller();
+
 
 
             System.out.println("\nSvømmeklub Database");
@@ -40,6 +40,8 @@ public class UserInterface {
                     addMedlem();
 
                 } else if (tal == 2) {
+                    System.out.println("\nMedlemsliste:\n");
+                    //ml.showMedlemsliste();
                     System.out.println(Controller.showMedlemsliste());
                 } else if (tal == 3) {
 

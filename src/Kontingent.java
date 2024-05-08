@@ -1,26 +1,29 @@
+import java.util.ArrayList;
 import java.util.List;
 
-public class Kontingent {
+public class Kontingent  {
+    List<Medlem> medlemliste;
     double totalIndbetalteKontingenter;
 
 
     public Kontingent() {
+        this.medlemliste = new ArrayList<>();
         this.totalIndbetalteKontingenter = 0.0;
 
     }
 
-    public void beregnTotalIndbetalteKontingenter(List <Medlem> medlemliste) {
-       if (medlemliste == null || medlemliste.isEmpty()) {
-           System.out.println("Ingen medlemmer i listen");
-           return;
-       }
+    public void beregnTotalIndbetalteKontingenter(List<Medlem> medlemliste) {
+        if (medlemliste == null || medlemliste.isEmpty()) {
+            System.out.println("Ingen medlemmer i listen");
+            return;
+        }
 
-       for (Medlem medlem : medlemliste) {
+        for (Medlem medlem : medlemliste) {
             if (medlem.medlemsType.equals("aktiv")) {
                 int alder = medlem.getFødselsDato();
                 if (alder < 18) {
                     totalIndbetalteKontingenter += 1000;
-                } else if (alder>= 18 && alder < 60) {
+                } else if (alder >= 18 && alder < 60) {
                     totalIndbetalteKontingenter += 1600;
                 } else {
                     totalIndbetalteKontingenter += 1600 * 0.75; // 25% rabat for seniorer
@@ -30,6 +33,15 @@ public class Kontingent {
             }
         }
         System.out.println("Det samlede indbetalte kontingent: " + totalIndbetalteKontingenter);
+    }
+
+
+    public void visMedlemmerIRestance() {
+        for (Medlem medlem : medlemliste) {
+        }
+
+        System.out.println("Liste over medlemmer i restance:");
+
     }
 
 }
