@@ -110,6 +110,18 @@ public class Medlemsliste {
         return medlemListe;
     }
 
+    public static ArrayList<Medlem> findMedlemmerIRestance(ArrayList<Medlem> medlemsliste) {
+        ArrayList<Medlem> medlemmerIRestance = new ArrayList<>();
+        for (Medlem medlem : medlemsliste) {
+            if (medlem.getRestance() > 0) {
+                medlemmerIRestance.add(medlem);
+            }
+        }
+        return medlemmerIRestance;
+    }
+
+
+
 
 
 

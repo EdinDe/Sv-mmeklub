@@ -49,6 +49,23 @@ public class Controller {
         } else {
             System.out.println("Der blev ikke fundet et medlem med navnet " + navn);
         }
+
+
+    }
+    public static String findMedlemmerIRestance() {
+        ArrayList<Medlem> medlemmerIRestance = Medlem.findMedlemmerIRestance(nyMedlemsListe.getMedlemListe());
+        StringBuilder result = new StringBuilder();
+        if (medlemmerIRestance.isEmpty()) {
+            result.append("Ingen medlemmer er i restance.");
+        } else {
+            result.append("Medlemmer i restance:\n");
+            for (Medlem medlem : medlemmerIRestance) {
+                result.append(medlem.getNavn()).append("\n");
+            }
+        }
+        return result.toString();
+
+
     }
 }
 

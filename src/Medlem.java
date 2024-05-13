@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Medlem {
 
     String navn;
@@ -7,6 +9,8 @@ public class Medlem {
     String medlemsType;
     boolean juniorEllerSenior;
     boolean motionistEllerKonku;
+    double restance;
+
 
     public Medlem(String navn, String køn, int fødselsDato, int telefonNummer, String medlemsType, boolean juniorEllerSenior, boolean mosionistEllerKonku) {
         this.navn = navn;
@@ -16,7 +20,19 @@ public class Medlem {
         this.medlemsType = medlemsType;
         this.juniorEllerSenior = juniorEllerSenior;
         this.motionistEllerKonku = mosionistEllerKonku;
+        this.restance=restance;
+
     }
+
+    public double getRestance() {
+        return restance;
+    }
+
+    public void setRestance(double restance) {
+        this.restance = restance;
+    }
+
+
 
     public String getNavn() {
         return navn;
@@ -77,5 +93,16 @@ public class Medlem {
     public String toString() {
         return "Navn: " + navn + ", Køn: " + køn + ", Fødselsdato: " + fødselsDato + ", Telefonnummer: " + telefonNummer + ", Medlemstype: " + medlemsType + ", Junior/Senior: " + (juniorEllerSenior ? "Junior" : "Senior") + ", Motionist/Konkurrence: " + (motionistEllerKonku ? "Motionist" : "Konkurrence");
     }
+    public static ArrayList<Medlem> findMedlemmerIRestance(ArrayList<Medlem> medlemsliste) {
+        ArrayList<Medlem> medlemmerIRestance = new ArrayList<>();
+        for (Medlem medlem : medlemsliste) {
+            if (medlem.getRestance() > 0) {
+                medlemmerIRestance.add(medlem);
+            }
+        }
+        return medlemmerIRestance;
+    }
+
+
 }
 

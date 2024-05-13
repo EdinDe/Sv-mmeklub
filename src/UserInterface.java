@@ -26,11 +26,12 @@ public class UserInterface {
                 System.out.println("\n1. tilføj en medlem");
                 System.out.println("2. Vis medlemsliste");
                 System.out.println("3. Søg efter en medlemmer");
-                System.out.println("4. Sorter medlemsliste");
-                System.out.println("5. Rediger medlem");
+                System.out.println("4. Rediger medlem");
+                System.out.println("5. Sorter medlemsliste");
                 System.out.println("6. Se forventet kontigent");
+                System.out.println("7. Se om hvor der er i restance eller ej");
 
-                System.out.println("7. Afslut program");
+                System.out.println("8. Afslut program");
 
 
                 tal = scanner.nextInt();
@@ -46,6 +47,7 @@ public class UserInterface {
                 } else if (tal == 3) {
 
                 }else if (tal==4){
+                    redigerMedlemmer();
 
                 }else if (tal==5) {
                     try {
@@ -54,9 +56,11 @@ public class UserInterface {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
+                } else if (tal==7) {
+                    System.out.println(Controller.findMedlemmerIRestance());
 
-
-                }else if(tal==7){
+                }else if(tal==8){
+                    System.out.println("Programmet blev afsluttet");
 
 
                 }
@@ -148,6 +152,7 @@ public class UserInterface {
         System.out.println("Medlemmet blev redigeret");
 
     }
+
 
 
 
