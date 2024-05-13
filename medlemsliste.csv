@@ -1,3 +1,4 @@
-batman,   abemand,123,123,   fisk, false, false
-superman,  kvinde,12242000,93939393,  vand, false, false
-Salem, kvinde,20072003,10000000, fisker, false, false
+batman,abemand,24102003,123,aktiv,false,false
+ben,kvinde,20071884,10000000,aktiv,false,false
+enger,mand,20072003,10000000,passiv,false,false
+abe,kat,12122003,2993939,aktiv,true,true

@@ -20,7 +20,7 @@ public class Medlem {
         this.medlemsType = medlemsType;
         this.juniorEllerSenior = juniorEllerSenior;
         this.motionistEllerKonku = mosionistEllerKonku;
-        this.restance=restance;
+
 
     }
 
