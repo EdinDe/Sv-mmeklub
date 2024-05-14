@@ -27,7 +27,7 @@ public class UserInterface {
                 System.out.println("2. Vis medlemsliste");
                 System.out.println("3. Søg efter en medlemmer");
                 System.out.println("4. Sorter medlemsliste");
-                System.out.println("5. Rediger medlem");
+                System.out.println("5. Opdater medlemsliste medlem");
                 System.out.println("6. Fjern  medlem");
                 System.out.println("7. Se forventet kontigent");
 
@@ -48,7 +48,7 @@ public class UserInterface {
                     søgMedlem();
 
                 }else if (tal==4){
-                fjernMedlem();
+
 
                 }else if (tal==5) {
                     try {
@@ -59,8 +59,10 @@ public class UserInterface {
                     }
 
 
-                }else if(tal==7){
+                }else if(tal==6){
+                    fjernMedlem();
 
+                } else if (tal==7) {
 
 
                 }
