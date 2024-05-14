@@ -45,6 +45,7 @@ public class UserInterface {
                     //ml.showMedlemsliste();
                     System.out.println(Controller.showMedlemsliste());
                 } else if (tal == 3) {
+                    søgMedlem();
 
                 }else if (tal==4){
                     redigerMedlemmer();
@@ -156,6 +157,23 @@ public class UserInterface {
 
     }
 
+    private void søgMedlem() {
+        System.out.println("\nSøg efter medlem");
+        String navn = scanner.next();
+
+        boolean fundet = false;
+        ArrayList<Medlem> fundetMedlemmer = Controller.søgMedlem(navn);
+
+        for (Medlem med : fundetMedlemmer) {
+            System.out.println(med);
+            fundet = true;
+        }
+
+        if (!fundet) {
+            System.out.println("ingen medlemmer med det navn fundet!");
+        }
+
+    }
 
 
 
