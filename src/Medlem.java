@@ -46,6 +46,7 @@ public class Medlem {
         return køn;
     }
 
+
     public void setKøn(String køn) {
         this.køn = køn;
     }
@@ -70,9 +71,12 @@ public class Medlem {
         return medlemsType;
     }
 
+
+
     public void setMedlemsType(String medlemsType) {
         this.medlemsType = medlemsType;
     }
+
 
     public boolean isJuniorEllerSenior() {
         return juniorEllerSenior;
@@ -102,6 +106,7 @@ public class Medlem {
         }
         return medlemmerIRestance;
     }
+
 
 
 }

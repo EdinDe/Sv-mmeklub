@@ -50,12 +50,23 @@ public class Kontingent  {
     }
 
 
-    public void visMedlemmerIRestance() {
-        for (Medlem medlem : medlemliste) {
+
+
+        public ArrayList<Medlem> findMedlemmerIRestance() {
+            ArrayList<Medlem> medlemmerIRestance = new ArrayList<>();
+            for (Medlem medlem : medlemliste) {
+                if (!medlem.medlemsType.equals("aktiv")) {
+                    // Passive medlemmer betragtes altid i restance
+                    medlemmerIRestance.add(medlem);
+                } else {
+                    int alder = java.time.Year.now().getValue() - medlem.getFødselsDato();
+                    if (alder < 18) {
+                        medlemmerIRestance.add(medlem);
+                    } else if (alder >= 60) {
+                        medlemmerIRestance.add(medlem);
+                    }
+                }
+            }
+            return medlemmerIRestance;
         }
-
-        System.out.println("Liste over medlemmer i restance:");
-
     }
-
-}

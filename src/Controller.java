@@ -34,12 +34,13 @@ public class Controller {
         return nyMedlemsListe.søgMedlem(search);
     }
 
-    public void redigerMedlemmer (String navn, String newNavn, String newKøn, String newFødselsdato, String newTelefonnummer, String newMedlemstype, boolean newJuniorEllerSenior, boolean newMotionistEllerKonku) {
+    public void redigerMedlemmer(String navn, String newNavn, String newKøn, String newFødselsdato, String newTelefonnummer, String newMedlemstype, boolean newJuniorEllerSenior, boolean newMotionistEllerKonku) {
         ArrayList<Medlem> medlemmerAtRedigere = nyMedlemsListe.søgMedlem(navn);
         if (!medlemmerAtRedigere.isEmpty()) {
             Medlem medlemAtRedigere = medlemmerAtRedigere.get(0);
 
-            medlemAtRedigere.setNavn(newNavn);;
+            medlemAtRedigere.setNavn(newNavn);
+            ;
             medlemAtRedigere.setKøn(newKøn);
             medlemAtRedigere.setFødselsDato(newFødselsdato);
             medlemAtRedigere.setTelefonNummer(newTelefonnummer);
@@ -52,6 +53,7 @@ public class Controller {
 
 
     }
+
     public static String findMedlemmerIRestance() {
         ArrayList<Medlem> medlemmerIRestance = Medlem.findMedlemmerIRestance(nyMedlemsListe.getMedlemListe());
         StringBuilder result = new StringBuilder();
@@ -67,8 +69,8 @@ public class Controller {
 
 
     }
-}
 
+}
 
 
 

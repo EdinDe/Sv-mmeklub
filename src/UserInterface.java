@@ -26,10 +26,10 @@ public class UserInterface {
                 System.out.println("\n1. tilføj en medlem");
                 System.out.println("2. Vis medlemsliste");
                 System.out.println("3. Søg efter en medlemmer");
-                System.out.println("4. Rediger medlem");
-                System.out.println("5. Sorter medlemsliste");
-                System.out.println("6. Se forventet kontigent");
-                System.out.println("7. Se om hvor der er i restance eller ej");
+                System.out.println("4. Sorter medlemsliste");
+                System.out.println("5. Rediger medlem");
+                System.out.println("6. Fjern  medlem");
+                System.out.println("7. Se forventet kontigent");
 
                 System.out.println("8. Afslut program");
 
@@ -48,7 +48,7 @@ public class UserInterface {
                     søgMedlem();
 
                 }else if (tal==4){
-                    redigerMedlemmer();
+                fjernMedlem();
 
                 }else if (tal==5) {
                     try {
@@ -57,14 +57,10 @@ public class UserInterface {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                } else if (tal==7) {
-                    System.out.println(Controller.findMedlemmerIRestance());
 
-                }else if(tal==8){
-                    System.out.println("Programmet blev afsluttet");
-                }else if (tal==6){
-                    saver.beregnTotalIndbetalteKontingenter();
-                }else if(tal==9){
+
+                }else if(tal==7){
+
 
 
                 }
@@ -136,7 +132,7 @@ public class UserInterface {
         System.out.println(" Junior eller Senior");
         boolean newJuniorEllerSenior = false;
         String juniorNot = scanner.next().toLowerCase();
-        if (juniorNot.equals("junior") || juniorNot.equals("senior")) {
+        if (juniorNot.equals("Junior") || juniorNot.equals("Senior")) {
             newJuniorEllerSenior = true;
         }
         scanner.nextLine();
@@ -144,7 +140,7 @@ public class UserInterface {
         System.out.println("Motionist eller Konkurrencesvømmer");
         boolean newMotionistEllerKonku = false;
         String motionistNot = scanner.next().toLowerCase();
-        if (motionistNot.equals("motionist") || motionistNot.equals("Konkurrencesvømmer")) {
+        if (motionistNot.equals("Motionist") || motionistNot.equals("Konkurrencesvømmer")) {
             newMotionistEllerKonku = true;
         }
         scanner.nextLine();
@@ -174,6 +170,12 @@ public class UserInterface {
         }
 
     }
+   private void fjernMedlem(){
+      Scanner scanner = new Scanner(System.in);
+       System.out.println("Indtast navn på medlem");
+       String navn = scanner.nextLine();
+       Medlemsliste.fjernMedlem(navn);
+   }
 
 
 

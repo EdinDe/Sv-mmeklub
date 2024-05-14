@@ -33,7 +33,7 @@ public class Medlemsliste {
             bw.write(String.format("%s,%s,%d,%d,%s,%b,%b",
                     medlem.getNavn(), medlem.getKøn(), medlem.getFødselsDato(),
                     medlem.getTelefonNummer(), medlem.getMedlemsType(),
-                    medlem.isJuniorEllerSenior(),medlem.isMotionistEllerKonku()));
+                    medlem.isJuniorEllerSenior(), medlem.isMotionistEllerKonku()));
             bw.newLine();
         }
 
@@ -81,7 +81,7 @@ public class Medlemsliste {
    }
 
 
-    public ArrayList<Medlem> søgMedlem (String navn) {
+    public ArrayList<Medlem> søgMedlem(String navn) {
         ArrayList<Medlem> søgResultat = new ArrayList<>();
         for (Medlem med : medlemListe) {
             if (med.getNavn().toLowerCase().contains(navn.toLowerCase())) {
@@ -94,7 +94,7 @@ public class Medlemsliste {
 
 
 
-    public void sorterMedlemmer () {
+    public void sorterMedlemmer() {
         Collections.sort(medlemListe, new Comparator<Medlem>() {
             @Override
             public int compare(Medlem o1, Medlem o2) {
@@ -104,13 +104,20 @@ public class Medlemsliste {
     }
 
     public String showMedlemslisteSorteretEfterNavn() {
-        sorterMedlemmer();
-        return showMedlemsliste();
-    }
+        sorterMedlemmer(); // Sort the member list by name
+        StringBuilder result = new StringBuilder();
+        result.append("Medlemsliste sorteret efter navn:\n");
+
+        // Append each member's information to the result string
+        for (Medlem medlem : medlemListe) {
+            result.append(medlem.toString()).append("\n");
+        }
+        return result.toString();
+    } // Add a closing curly brace for showMedlemslisteSorteretEfterNavn method
+
     public static void setMedlemListe(ArrayList<Medlem> nyMedlemListe) {
         medlemListe = nyMedlemListe;
     }
-
 
     public ArrayList<Medlem> getMedlemListe() {
         return medlemListe;
@@ -182,8 +189,16 @@ public class Medlemsliste {
         }
         return medlemmerIRestance;
     }
-
-
+    public static void fjernMedlem(String navn){
+       for(Medlem medlem : medlemListe){
+           if (medlem.getNavn().equals(navn)){
+               medlemListe.remove(medlem);
+               System.out.println("Medlem fjernet: " + navn);
+               return;
+           }
+       }
+        System.out.println("Medlem med navnet " + navn + " blev ikke fundet" );
+    }
 
 
 
