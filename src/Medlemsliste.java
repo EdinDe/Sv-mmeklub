@@ -49,8 +49,6 @@ public class Medlemsliste {
 
     }
 
-    public void
-
     public ArrayList<String> listeAfMedlemmer() {
         ArrayList<String> locallisteAfMedlemmer = new ArrayList<>();
         for (int i = 0; i < medlemListe.size(); i++) {
