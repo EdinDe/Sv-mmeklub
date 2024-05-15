@@ -12,6 +12,9 @@ public class UserInterface {
 
     Scanner scanner = new Scanner(System.in);
 
+    public UserInterface(String role) {
+    }
+
     public void start() {
         int sentinel = 5;
         int tal = 0;
