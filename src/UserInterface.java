@@ -6,11 +6,11 @@ import java.util.Scanner;
 
 
 public class UserInterface {
-    Controller ml = new Controller();
-    Medlemsliste saver = new Medlemsliste();
+        Controller ml = new Controller();
+        Medlemsliste saver = new Medlemsliste();
 
 
-    Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
     public UserInterface(String role) {
     }
@@ -33,8 +33,8 @@ public class UserInterface {
             System.out.println("5. Opdater medlemsliste medlem");
             System.out.println("6. Fjern  medlem");
             System.out.println("7. Se forventet kontigent");
-
-            System.out.println("8. Afslut program");
+            System.out.println("8. Se medlemmer i restance");
+            System.out.println("9. Afslut program");
 
 
             tal = scanner.nextInt();
@@ -52,9 +52,16 @@ public class UserInterface {
 
             } else if (tal == 4) {
                 sorterMedlemmer();
-
-
-            } else if (tal == 5) {
+                }else if (tal==5) {
+                    redigerMedlemmer();
+                }else if(tal==6){
+                    fjernMedlem();
+                } else if (tal==8) {
+                    System.out.println(Controller.findMedlemmerIRestance());
+                }else if (tal==7){
+                    saver.beregnTotalIndbetalteKontingenter();
+                }else if(tal==9){
+                System.out.println("Programmet blev afsluttet");
                 try {
                     saver.saveMedlemsliste();
                     break;
@@ -62,53 +69,42 @@ public class UserInterface {
                     throw new RuntimeException(e);
                 }
 
-                }else if (tal==6){
-                    System.out.println("Kontigent");
-                    System.out(Controller.visMedlemmerIRestance);
-
-            } else if (tal == 6) {
-                fjernMedlem();
-
-            } else if (tal == 7) {
-
-
             }
 
+            }
         }
-    }
+        private void addMedlem() {
+            System.out.println("Angiv navn på ny medlem:");
+            String navn = scanner.nextLine();
 
-    private void addMedlem() {
-        System.out.println("Angiv navn på ny medlem:");
-        String navn = scanner.nextLine();
+            System.out.println("Angiv medlems køn");
+            String køn = scanner.nextLine();
 
-        System.out.println("Angiv medlems køn");
-        String køn = scanner.nextLine();
-
-        System.out.println("Angiv medlems fødselsår");
-        int fødselsDato = scanner.nextInt();
+            System.out.println("Angiv medlems fødselsår");
+            int fødselsDato = scanner.nextInt();
 
 
-        System.out.println("Angiv medlems telefonnummer");
-        int telefonNummer = scanner.nextInt();
+            System.out.println("Angiv medlems telefonnummer");
+            int telefonNummer = scanner.nextInt();
 
-        System.out.println("Angiv medlems medlemstype");
-        scanner.nextLine();
-        String medlemsType = scanner.nextLine();
+            System.out.println("Angiv medlems medlemstype");
+            scanner.nextLine();
+            String medlemsType = scanner.nextLine();
 
-        System.out.println("Er medlem en junior eller senior?");
-        boolean juniorEllerSenior = false;
-        String seniorEllerJunior = scanner.next().toLowerCase();
-        if (seniorEllerJunior.equals("junior")) {
-            juniorEllerSenior = true;
-        }
+            System.out.println("Er medlem en junior eller senior?");
+            boolean juniorEllerSenior = false;
+            String seniorEllerJunior = scanner.next().toLowerCase();
+            if (seniorEllerJunior.equals("junior")) {
+                juniorEllerSenior = true;
+            }
 
-        System.out.println("Er medlem motionist eller konkurrencesvømmer");
-        boolean motionistEllerKonku = false;
-        String konkuEllerMotionist = scanner.next().toLowerCase();
-        if (konkuEllerMotionist.equals("motionist")) {
-            motionistEllerKonku = true;
+            System.out.println("Er medlem motionist eller konkurrencesvømmer");
+            boolean motionistEllerKonku = false;
+            String konkuEllerMotionist = scanner.next().toLowerCase();
+            if(konkuEllerMotionist.equals("motionist")) {
+                motionistEllerKonku = true;
 
-        }
+            }
 
 
         Controller.addMedlem(navn, køn, fødselsDato, telefonNummer, medlemsType, juniorEllerSenior, motionistEllerKonku);
@@ -140,7 +136,7 @@ public class UserInterface {
         System.out.println(" Junior eller Senior");
         boolean newJuniorEllerSenior = false;
         String juniorNot = scanner.next().toLowerCase();
-        if (juniorNot.equals("Junior") || juniorNot.equals("Senior")) {
+        if (juniorNot.equals("junior") || juniorNot.equals("senior")) {
             newJuniorEllerSenior = true;
         }
         scanner.nextLine();
@@ -148,7 +144,7 @@ public class UserInterface {
         System.out.println("Motionist eller Konkurrencesvømmer");
         boolean newMotionistEllerKonku = false;
         String motionistNot = scanner.next().toLowerCase();
-        if (motionistNot.equals("Motionist") || motionistNot.equals("Konkurrencesvømmer")) {
+        if (motionistNot.equals("motionist") || motionistNot.equals("konkurrencesvømmer")) {
             newMotionistEllerKonku = true;
         }
         scanner.nextLine();
