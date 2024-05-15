@@ -59,6 +59,9 @@ public class UserInterface {
                     throw new RuntimeException(e);
                 }
 
+                }else if (tal==6){
+                    System.out.println("Kontigent");
+                    System.out(Controller.visMedlemmerIRestance);
 
             } else if (tal == 6) {
                 fjernMedlem();
