@@ -9,10 +9,9 @@ public class KonkurrenceSvømmer {
         int tid;
         int placering;
 
-    public void KonkurrenceSvømmer(){
+   /* public void KonkurrenceSvømmer(){
 
-    }
-    public void start() {
+    }*  public void start() {
             System.out.println("Er svømmeren en motionist eller konkurrencesvømmer? (true/false)");
             motionistEllerKonku = input.nextBoolean();
 
@@ -38,5 +37,7 @@ public class KonkurrenceSvømmer {
             } else {
                 System.out.println("Svømmeren er en motionist.");
             }
-        }
+        }*/
     }
+
+
