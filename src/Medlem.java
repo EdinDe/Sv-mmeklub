@@ -12,6 +12,7 @@ public class Medlem {
     double restance;
 
 
+
     public Medlem(String navn, String køn, int fødselsDato, int telefonNummer, String medlemsType, boolean juniorEllerSenior, boolean mosionistEllerKonku) {
         this.navn = navn;
         this.køn = køn;
@@ -95,7 +96,7 @@ public class Medlem {
     }
     @Override
     public String toString() {
-        return "Navn: " + navn + ", Køn: " + køn + ", Fødselsdato: " + fødselsDato + ", Telefonnummer: " + telefonNummer + ", Medlemstype: " + medlemsType + ", Junior/Senior: " + (juniorEllerSenior ? "Junior" : "Senior") + ", Motionist/Konkurrence: " + (motionistEllerKonku ? "Motionist" : "Konkurrence");
+        return "Navn: " + navn + ", Køn: gv" + køn + ", Fødselsdato: " + fødselsDato + ", Telefonnummer: " + telefonNummer + ", Medlemstype: " + medlemsType + ", Junior/Senior: " + (juniorEllerSenior ? "Junior" : "Senior") + ", Motionist/Konkurrence: " + (motionistEllerKonku ? "Motionist" : "Konkurrence");
     }
     public static ArrayList<Medlem> findMedlemmerIRestance(ArrayList<Medlem> medlemsliste) {
         ArrayList<Medlem> medlemmerIRestance = new ArrayList<>();

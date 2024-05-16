@@ -6,11 +6,11 @@ import java.util.Scanner;
 
 
 public class UserInterface {
-    Controller ml = new Controller();
-    Medlemsliste saver = new Medlemsliste();
+        Controller ml = new Controller();
+        Medlemsliste saver = new Medlemsliste();
 
 
-    Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
     public UserInterface(String role) {
     }
@@ -48,76 +48,43 @@ public class UserInterface {
             System.out.println("5. Opdater medlemsliste medlem");
             System.out.println("6. Fjern et medlem");
             System.out.println("7. Se forventet kontigent");
-            System.out.println("8. Afslut program");
+            System.out.println("8. Se medlemmer i restance");
+            System.out.println("9. Afslut program");
+
 
             tal = scanner.nextInt();
             scanner.nextLine();
 
-            switch (tal) {
-                case 1:
-                    addMedlem();
-                    break;
-                case 2:
-                    System.out.println("\nMedlemsliste:\n");
-                    System.out.println(Controller.showMedlemsliste());
-                    break;
-                case 3:
-                    søgMedlem();
-                    break;
-                case 4:
-                    sorterMedlemmer();
-                    break;
-                case 5:
-                    try {
-                        saver.saveMedlemsliste();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    break;
-                case 6:
+            if (tal == 1) {
+                addMedlem();
+
+            } else if (tal == 2) {
+                System.out.println("\nMedlemsliste:\n");
+                //ml.showMedlemsliste();
+                System.out.println(Controller.showMedlemsliste());
+            } else if (tal == 3) {
+                søgMedlem();
+
+            } else if (tal == 4) {
+                sorterMedlemmer();
+                }else if (tal==5) {
+                    redigerMedlemmer();
+                }else if(tal==6){
                     fjernMedlem();
+                } else if (tal==8) {
+                    System.out.println(Controller.findMedlemmerIRestance());
+                }else if (tal==7){
+                    saver.beregnTotalIndbetalteKontingenter();
+                }else if(tal==9){
+                System.out.println("Programmet blev afsluttet");
+                try {
+                    saver.saveMedlemsliste();
                     break;
-                case 7:
-                    // Ejeren har ikke adgang til denne funktion, ignorer
-                    break;
-                case 8:
-                    // Afslut program
-                    break;
-                default:
-                    System.out.println("Ugyldigt valg. Prøv igen.");
-                    break;
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
             }
-        }
-    }
-
-    private void handleCoachAccess() {
-        // Træneren har adgang til at vise medlemslisten, søge efter et medlem og afslutte programmet
-        int tal = 5;
-        while (tal != 8) {
-            System.out.println("\n1. Vis medlemsliste");
-            System.out.println("2. Søg efter et medlem");
-            System.out.println("3. Afslut program");
-
-            tal = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (tal) {
-                case 2:
-                    System.out.println("\nMedlemsliste:\n");
-                    System.out.println(Controller.showMedlemsliste());
-                    break;
-                case 3:
-                    søgMedlem();
-                    break;
-                case 8:
-                    // Afslut program
-                    break;
-                default:
-                    System.out.println("Ugyldigt valg. Prøv igen.");
-                    break;
-            }
-        }
-    }
 
     private void handleAccountantAccess() {
         // Personen, der håndterer restance, har adgang til at se forventet kontingent og afslutte programmet
@@ -207,7 +174,7 @@ public class UserInterface {
         System.out.println(" Junior eller Senior");
         boolean newJuniorEllerSenior = false;
         String juniorNot = scanner.next().toLowerCase();
-        if (juniorNot.equals("Junior") || juniorNot.equals("Senior")) {
+        if (juniorNot.equals("junior") || juniorNot.equals("senior")) {
             newJuniorEllerSenior = true;
         }
         scanner.nextLine();
@@ -215,7 +182,7 @@ public class UserInterface {
         System.out.println("Motionist eller Konkurrencesvømmer");
         boolean newMotionistEllerKonku = false;
         String motionistNot = scanner.next().toLowerCase();
-        if (motionistNot.equals("Motionist") || motionistNot.equals("Konkurrencesvømmer")) {
+        if (motionistNot.equals("motionist") || motionistNot.equals("konkurrencesvømmer")) {
             newMotionistEllerKonku = true;
         }
         scanner.nextLine();
