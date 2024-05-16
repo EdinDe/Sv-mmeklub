@@ -8,35 +8,35 @@ public class KonkurrenceSvømmer {
         String stævne;
         int tid;
         int placering;
+    String svømmeDisciplin1;
+    String stævne1;
+    int tid1;
+    int placering1;
+    String svømmeDisciplin2;
+    String stævne2;
+    int tid2;
+    int placering2;
+    String svømmeDisciplin3;
+    String stævne3;
+    int tid3;
+    int placering3;
 
-    public void KonkurrenceSvømmer(){
-
+    public void KonkurrenceSvømmer(String svømmeDisciplin, String stævne, int tid, int placering){
+        this.svømmeDisciplin = svømmeDisciplin;
+        this.stævne = stævne;
+        this.tid = tid;
+        this.placering = placering;
     }
     public void start() {
-            System.out.println("Er svømmeren en motionist eller konkurrencesvømmer? (true/false)");
-            motionistEllerKonku = input.nextBoolean();
+        System.out.print("Indtast svømmedisciplin: ");
+        svømmeDisciplin = input.next();
+        System.out.print("Indtast stævne: ");
+        stævne = input.next();
+        System.out.print("Indtast tid: ");
+        tid = input.nextInt();
+        System.out.print("Indtast placering: ");
+        placering = input.nextInt();
 
-            if (motionistEllerKonku) {
-                System.out.println("Er svømmeren en konkurrencesvømmer? (true/false)");
-                boolean erKonkurrenceSvømmer = input.nextBoolean();
 
-                if (erKonkurrenceSvømmer) {
-                    System.out.print("Indtast svømmedisciplin: ");
-                    svømmeDisciplin = input.next();
-
-                    System.out.print("Indtast stævne: ");
-                    stævne = input.next();
-
-                    System.out.print("Indtast tid: ");
-                    tid = input.nextInt();
-
-                    System.out.print("Indtast placering: ");
-                    placering = input.nextInt();
-                } else {
-                    System.out.println("Svømmeren er en motionist, ikke en konkurrencesvømmer.");
-                }
-            } else {
-                System.out.println("Svømmeren er en motionist.");
-            }
         }
     }
