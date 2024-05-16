@@ -38,16 +38,21 @@ public class Main {
             String role = userRoles.get(inputUsername);
             System.out.println("Velkommen, " + role + "!");
             UserInterface ui = new UserInterface(role);
-            ui.start();
+            ui.start(role);
         } else {
             // Hvis ikke, vis en fejlmeddelelse og afslut programmet
             System.out.println("Forkert brugernavn eller adgangskode. Adgang nægtet.");
+
         }
+
     }
+
 
     // Metode til at validere brugerens legitimationsoplysninger
     private static boolean validateUser(String username, String password) {
         String storedPassword = userRoles.get(username); // Hent gemt adgangskode fra map
         return storedPassword != null && storedPassword.equals(password); // Sammenlign med indtastet adgangskode
     }
+
+
 }

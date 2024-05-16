@@ -15,64 +15,134 @@ public class UserInterface {
     public UserInterface(String role) {
     }
 
-    public void start() {
-        int sentinel = 5;
+    public void start(String role) {
+    int sentinel = 5;
+    int tal = 0;
+    String filename = "medlemsliste.csv";
+    ArrayList<Medlem> loadedData = Filehandler.loadDataFromCSV(filename);
+    Medlemsliste.setMedlemListe(loadedData);
+        switch (role) {
+            case "Ejer":
+                handleOwnerAccess();
+                break;
+            case "Træner":
+                handleCoachAccess();
+                break;
+            case "Restance":
+                handleAccountantAccess();
+                break;
+            default:
+                System.out.println("Ugyldig rolle. Adgang nægtet.");
+                break;
+        }
+    }
+
+    private void handleOwnerAccess() {
+        // Ejeren har adgang til alle funktioner
         int tal = 0;
-        String filename = "medlemsliste.csv";
-        ArrayList<Medlem> loadedData = Filehandler.loadDataFromCSV(filename);
-        Medlemsliste.setMedlemListe(loadedData);
-
-
-        System.out.println("\nSvømmeklub Database");
-
-        while (tal != sentinel) {
-            System.out.println("\n1. tilføj en medlem");
+        while (tal != 8) {
+            System.out.println("\n1. Tilføj et medlem");
             System.out.println("2. Vis medlemsliste");
-            System.out.println("3. Søg efter en medlemmer");
-            System.out.println("4. Sorter medlemsliste");
+            System.out.println("3. Søg efter et medlem");
+            System.out.println("4. Sorter medlemslisten");
             System.out.println("5. Opdater medlemsliste medlem");
-            System.out.println("6. Fjern  medlem");
+            System.out.println("6. Fjern et medlem");
             System.out.println("7. Se forventet kontigent");
-
             System.out.println("8. Afslut program");
-
 
             tal = scanner.nextInt();
             scanner.nextLine();
 
-            if (tal == 1) {
-                addMedlem();
-
-            } else if (tal == 2) {
-                System.out.println("\nMedlemsliste:\n");
-                //ml.showMedlemsliste();
-                System.out.println(Controller.showMedlemsliste());
-            } else if (tal == 3) {
-                søgMedlem();
-
-            } else if (tal == 4) {
-                sorterMedlemmer();
-
-
-            } else if (tal == 5) {
-                try {
-                    saver.saveMedlemsliste();
+            switch (tal) {
+                case 1:
+                    addMedlem();
                     break;
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-
-
-            } else if (tal == 6) {
-                fjernMedlem();
-
-            } else if (tal == 7) {
-
-
+                case 2:
+                    System.out.println("\nMedlemsliste:\n");
+                    System.out.println(Controller.showMedlemsliste());
+                    break;
+                case 3:
+                    søgMedlem();
+                    break;
+                case 4:
+                    sorterMedlemmer();
+                    break;
+                case 5:
+                    try {
+                        saver.saveMedlemsliste();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case 6:
+                    fjernMedlem();
+                    break;
+                case 7:
+                    // Ejeren har ikke adgang til denne funktion, ignorer
+                    break;
+                case 8:
+                    // Afslut program
+                    break;
+                default:
+                    System.out.println("Ugyldigt valg. Prøv igen.");
+                    break;
             }
-
         }
     }
+
+    private void handleCoachAccess() {
+        // Træneren har adgang til at vise medlemslisten, søge efter et medlem og afslutte programmet
+        int tal = 5;
+        while (tal != 8) {
+            System.out.println("\n1. Vis medlemsliste");
+            System.out.println("2. Søg efter et medlem");
+            System.out.println("3. Afslut program");
+
+            tal = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (tal) {
+                case 2:
+                    System.out.println("\nMedlemsliste:\n");
+                    System.out.println(Controller.showMedlemsliste());
+                    break;
+                case 3:
+                    søgMedlem();
+                    break;
+                case 8:
+                    // Afslut program
+                    break;
+                default:
+                    System.out.println("Ugyldigt valg. Prøv igen.");
+                    break;
+            }
+        }
+    }
+
+    private void handleAccountantAccess() {
+        // Personen, der håndterer restance, har adgang til at se forventet kontingent og afslutte programmet
+        int tal = 0;
+        while (tal != 8) {
+            System.out.println("\n1. Se forventet kontigent");
+            System.out.println("2. Afslut program");
+
+            tal = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (tal) {
+                case 7:
+                    // Se forventet kontingent
+                    break;
+                case 8:
+                    // Afslut program
+                    break;
+                default:
+                    System.out.println("Ugyldigt valg. Prøv igen.");
+                    break;
+            }
+        }
+    }
+
 
     private void addMedlem() {
         System.out.println("Angiv navn på ny medlem:");
