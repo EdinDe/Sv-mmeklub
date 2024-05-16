@@ -9,8 +9,8 @@ public class Controller {
     }
 
 
-    public static void addMedlem(String navn, String køn, int fødselsdato, int telefonNummer, String medlemstype, boolean juniorEllerSenior, boolean motionistEllerKonku) {
-        nyMedlemsListe.addMedlem(navn, køn, fødselsdato, telefonNummer, medlemstype, juniorEllerSenior, motionistEllerKonku);
+    public static void addMedlem(String navn, String køn, int fødselsdato, int telefonNummer, String medlemstype, boolean juniorEllerSenior, boolean motionistEllerKonku,boolean restance) {
+        nyMedlemsListe.addMedlem(navn, køn, fødselsdato, telefonNummer, medlemstype, juniorEllerSenior, motionistEllerKonku, restance);
     }
 
     public ArrayList<String> listeAfMedlemmer() {
@@ -55,17 +55,17 @@ public class Controller {
     }
 
     public static String findMedlemmerIRestance() {
-        ArrayList<Medlem> medlemmerIRestance = Medlem.findMedlemmerIRestance(nyMedlemsListe.getMedlemListe());
+        ArrayList<String> medlemmerIRestance = Medlem.findMedlemmerIRestance(nyMedlemsListe.getMedlemListe());
         StringBuilder result = new StringBuilder();
         if (medlemmerIRestance.isEmpty()) {
             result.append("Ingen medlemmer er i restance.");
         } else {
             result.append("Medlemmer i restance:\n");
-            for (Medlem medlem : medlemmerIRestance) {
-                result.append(medlem.getNavn()).append("\n");
+            for (String medlem : medlemmerIRestance) {
+                result.append(medlem).append("\n");
             }
         }
-        return result.toString();
+        return String.valueOf(result);
 
 
     }

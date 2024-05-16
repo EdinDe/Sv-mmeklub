@@ -41,7 +41,7 @@ public class UserInterface {
     private void handleOwnerAccess() {
         // Ejeren har adgang til alle funktioner
         int tal = 0;
-        while (tal != 8) {
+        while (tal != 9) {
             System.out.println("\n1. Tilføj et medlem");
             System.out.println("2. Vis medlemsliste");
             System.out.println("3. Søg efter et medlem");
@@ -51,6 +51,7 @@ public class UserInterface {
             System.out.println("7. Se forventet kontigent");
             System.out.println("8. Se medlemmer i restance");
             System.out.println("9. Afslut program");
+            System.out.println("10. Tilføj medlem som er i restance");
 
 
             tal = scanner.nextInt();
@@ -85,13 +86,16 @@ public class UserInterface {
                     throw new RuntimeException(e);
                 }
 
+            }else if(tal == 10){
+                tilføjMedlemIRestance();
+
             }
         }
     }
     private void handleCoachAccess() {
         // Træneren har adgang til at vise medlemslisten, søge efter et medlem og afslutte programmet
         int tal = 0;
-        while (tal != 8) {
+        while (tal != 9) {
             System.out.println("\n2. Vis medlemsliste");
             System.out.println("3. Søg efter et medlem");
             System.out.println("8. Afslut program");
@@ -107,9 +111,14 @@ public class UserInterface {
                 case 3:
                     søgMedlem();
                     break;
-                case 8:
-                    // Afslut program
-                    break;
+                case 9:
+                    System.out.println("Programmet blev afsluttet");
+                    try {
+                        saver.saveMedlemsliste();
+                        break;
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 default:
                     System.out.println("Ugyldigt valg. Prøv igen.");
                     break;
@@ -119,7 +128,7 @@ public class UserInterface {
         private void handleAccountantAccess () {
                 // Personen, der håndterer restance, har adgang til at se forventet kontingent og afslutte programmet
                 int tal = 0;
-                while (tal != 8) {
+                while (tal != 9) {
                     System.out.println("\n1. Se forventet kontigent");
                     System.out.println("2. Afslut program");
 
@@ -130,14 +139,39 @@ public class UserInterface {
                         case 7:
                             // Se forventet kontingent
                             break;
-                        case 8:
-                            // Afslut program
-                            break;
+                        case 9:
+                            System.out.println("Programmet blev afsluttet");
+                            try {
+                                saver.saveMedlemsliste();
+                                break;
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
                         default:
                             System.out.println("Ugyldigt valg. Prøv igen.");
                             break;
                     }
                 }
+            }
+
+            private void tilføjMedlemIRestance(){
+                System.out.println("Her kan du ændre status på om en medlem er i restance. Indtast medlems navn");
+                boolean restanceStatus = false;
+                String name = scanner.next().toLowerCase();
+                System.out.println("Er medlemmen i restance? ja eller nej");
+                String restancejaellernej = scanner.next().toLowerCase();
+                if (restancejaellernej.equals("ja")) {
+                    restanceStatus = true;
+                    saver.setRestanceStatusViaName(name,restanceStatus);
+                    System.out.println("Medlem tilføjet til listen af medlemmer i restance.");
+                }else if(restancejaellernej.equals("nej")){
+                    restanceStatus = false;
+                    saver.setRestanceStatusViaName(name,restanceStatus);
+                    System.out.println("Medlem fjernet fra listen af medlemmer i restance.");
+                }
+
+
+
             }
 
 
@@ -173,9 +207,10 @@ public class UserInterface {
                     motionistEllerKonku = true;
 
                 }
+                boolean restance = false;
 
 
-                Controller.addMedlem(navn, køn, fødselsDato, telefonNummer, medlemsType, juniorEllerSenior, motionistEllerKonku);
+                Controller.addMedlem(navn, køn, fødselsDato, telefonNummer, medlemsType, juniorEllerSenior, motionistEllerKonku,restance);
 
                 System.out.println("\nMedlem blev tilføjet");
 

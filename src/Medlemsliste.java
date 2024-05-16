@@ -30,10 +30,10 @@ public class Medlemsliste {
 
         // Write each movie to the CSV file
         for (Medlem medlem : medlemListe) {
-            bw.write(String.format("%s,%s,%d,%d,%s,%b,%b",
+            bw.write(String.format("%s,%s,%d,%d,%s,%b,%b,%b",
                     medlem.getNavn(), medlem.getKøn(), medlem.getFødselsDato(),
                     medlem.getTelefonNummer(), medlem.getMedlemsType(),
-                    medlem.isJuniorEllerSenior(), medlem.isMotionistEllerKonku()));
+                    medlem.isJuniorEllerSenior(), medlem.isMotionistEllerKonku(),medlem.getRestance()));
             bw.newLine();
         }
 
@@ -44,8 +44,8 @@ public class Medlemsliste {
         System.out.println("Opdateret medlemsinfo er nu gemt! :)");
     }
 
-    public void addMedlem(String navn, String køn, int fødselsdato, int telefonNummer, String medlemstype, boolean juniorEllerSenior, boolean motionistEllerKonku) {
-        medlemListe.add(new Medlem(navn, køn, fødselsdato, telefonNummer, medlemstype, juniorEllerSenior, motionistEllerKonku));
+    public void addMedlem(String navn, String køn, int fødselsdato, int telefonNummer, String medlemstype, boolean juniorEllerSenior, boolean motionistEllerKonku, boolean restance) {
+        medlemListe.add(new Medlem(navn, køn, fødselsdato, telefonNummer, medlemstype, juniorEllerSenior, motionistEllerKonku,restance));
 
     }
 
@@ -56,6 +56,24 @@ public class Medlemsliste {
         }
         return locallisteAfMedlemmer;
     }
+    public Medlem findMedlemByName(String name) {
+        for (Medlem medlem : medlemListe) {
+            if (medlem.getNavn().equalsIgnoreCase(name)) {
+                return medlem;
+            }
+        }
+        return null;
+    }
+    public void setRestanceStatusViaName(String name, boolean restanceStatus) {
+        Medlem medlem = findMedlemByName(name);
+        if (medlem != null) {
+            medlem.setRestance(restanceStatus);
+            System.out.println("Restance status af " + name + " opdateret til " + restanceStatus);
+        } else {
+            System.out.println("Medlem med navnet " + name + " blev ikke fundet.");
+        }
+    }
+
 
     public void getList() {
         for (Medlem m : medlemListe) {
@@ -181,7 +199,7 @@ public class Medlemsliste {
     public static ArrayList<Medlem> findMedlemmerIRestance(ArrayList<Medlem> medlemsliste) {
         ArrayList<Medlem> medlemmerIRestance = new ArrayList<>();
         for (Medlem medlem : medlemsliste) {
-            if (medlem.getRestance() > 0) {
+            if (medlem.getRestance() == true) {
                 medlemmerIRestance.add(medlem);
             }
         }
