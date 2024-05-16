@@ -27,7 +27,7 @@ public class KonkurrenceSvømmer {
         this.tid = tid;
         this.placering = placering;
     }
-    public void start() {
+    public void svømmestart() {
         System.out.print("Indtast svømmedisciplin: ");
         svømmeDisciplin = input.next();
         System.out.print("Indtast stævne: ");
