@@ -52,6 +52,7 @@ public class UserInterface {
             System.out.println("8. Se medlemmer i restance");
             System.out.println("9. Afslut program");
             System.out.println("10. Tilføj medlem som er i restance");
+            System.out.println("11. Liste over konkurrencesvømmere");
 
 
             tal = scanner.nextInt();
