@@ -87,8 +87,12 @@ public class UserInterface {
                     throw new RuntimeException(e);
                 }
 
-            }else if(tal == 10){
+            }else if(tal == 10) {
                 tilføjMedlemIRestance();
+
+            }else if(tal == 11) {
+                System.out.println("\nTop 5:\n");
+                System.out.println(Controller.showMedlemsliste());
 
             }
         }
