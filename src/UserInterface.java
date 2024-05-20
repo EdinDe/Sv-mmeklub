@@ -92,7 +92,7 @@ public class UserInterface {
 
             }else if(tal == 11) {
                 System.out.println("\nTop 5:\n");
-                System.out.println(Controller.showTopFemListe());
+                //System.out.println(Controller.showTopFemListe());
 
             }
         }
@@ -212,6 +212,15 @@ public class UserInterface {
                     motionistEllerKonku = true;
 
                 }
+
+                if (motionistEllerKonku) {
+                    KonkurrenceSvømmer konkurrenceSvømmer = new KonkurrenceSvømmer();
+                    konkurrenceSvømmer.svømmestart();
+                } else {
+                    System.out.println("Motionist chosen. No competitive swimming details needed.");
+
+
+                }
                 boolean restance = false;
 
 
@@ -254,6 +263,8 @@ public class UserInterface {
                 String motionistNot = scanner.next().toLowerCase();
                 if (motionistNot.equals("motionist") || motionistNot.equals("konkurrencesvømmer")) {
                     newMotionistEllerKonku = true;
+
+
                 }
                 scanner.nextLine();
 
