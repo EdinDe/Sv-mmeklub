@@ -92,7 +92,7 @@ public class UserInterface {
 
             }else if(tal == 11) {
                 System.out.println("\nTop 5:\n");
-                System.out.println(Controller.showMedlemsliste());
+                System.out.println(Controller.showTopFemListe());
 
             }
         }
