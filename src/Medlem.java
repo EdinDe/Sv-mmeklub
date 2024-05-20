@@ -13,10 +13,19 @@ public class Medlem {
     boolean motionistEllerKonku;
     boolean restance;
 
+    String svømmeDisciplin;
+
+    String stævne;
+
+    int tid;
+
+    int placering;
 
 
 
-    public Medlem(String navn, String køn, int fødselsDato, int telefonNummer, String medlemsType, boolean juniorEllerSenior, boolean mosionistEllerKonku,boolean restance) {
+
+
+    public Medlem(String navn, String køn, int fødselsDato, int telefonNummer, String medlemsType, boolean juniorEllerSenior, boolean mosionistEllerKonku,boolean restance, String svømmeDisciplin, String stævne, int tid, int placering) {
         this.navn = navn;
         this.køn = køn;
         this.fødselsDato = fødselsDato;
@@ -25,6 +34,10 @@ public class Medlem {
         this.juniorEllerSenior = juniorEllerSenior;
         this.motionistEllerKonku = mosionistEllerKonku;
         this.restance = restance;
+        this.svømmeDisciplin = svømmeDisciplin;
+        this.stævne = stævne;
+        this.tid = tid;
+        this.placering = placering;
 
 
     }
@@ -98,9 +111,48 @@ public class Medlem {
     public void setMotionistEllerKonku(boolean motionistEllerKonku) {
         this.motionistEllerKonku = motionistEllerKonku;
     }
+
+    public String getSvømmeDisciplin() {
+        return svømmeDisciplin;
+    }
+
+        public void setSvømmeDisciplin(String svømmeDisciplin) {
+            this.svømmeDisciplin = svømmeDisciplin;
+
+    }
+
+    public String getStævne() {
+        return stævne;
+    }
+
+        public void setStævne(String stævne) {
+            this.stævne = stævne;
+    }
+
+    public int getTid() {
+        return tid;
+
+    }
+
+
+        public void setTid(int tid) {
+            this.tid = tid;
+    }
+
+    public int getPlacering() {
+        return placering;
+
+    }
+
+    public void setPlacering(int placering) {
+        this.placering = placering;
+
+    }
+
+
     @Override
     public String toString() {
-        return "Navn: " + navn + ", Køn: " + køn + ", Fødselsdato: " + fødselsDato + ", Telefonnummer: " + telefonNummer + ", Medlemstype: " + medlemsType + ", Junior/Senior: " + (juniorEllerSenior ? "Junior" : "Senior") + ", Motionist/Konkurrence: " + (motionistEllerKonku ? "Motionist" : "Konkurrence");
+        return "Navn: " + navn + ", Køn: " + køn + ", Fødselsdato: " + fødselsDato + ", Telefonnummer: " + telefonNummer + ", Medlemstype: " + medlemsType + ", Junior/Senior: " + (juniorEllerSenior ? "Junior" : "Senior") + ", Motionist/Konkurrence: " + (motionistEllerKonku ? "Motionist" : "Konkurrence") + "Svømmediscplin: " + svømmeDisciplin + ", Stævne: " + stævne + ", Tid: " + tid + ". Placering: " + placering;
     }
     public String toStringRestance() {
         return "Navn: " + navn + ", Køn: " + køn + ", Junior/Senior: " + (juniorEllerSenior ? "Junior" : "Senior") + ", Motionist/Konkurrence: " + (motionistEllerKonku ? "Motionist" : "Konkurrence");

@@ -208,25 +208,44 @@ public class UserInterface {
                 System.out.println("Er medlem motionist eller konkurrencesvømmer");
                 boolean motionistEllerKonku = false;
                 String konkuEllerMotionist = scanner.next().toLowerCase();
+//                System.out.println("Indtast svømmedisciplin(butterfly, crawl, rygcrawl og brystsvømning): ");
+//                String svømmeDisciplin = scanner.nextLine();
+//                System.out.println("indtast stævne: ");
+//                String stævne = scanner.nextLine();
+//                System.out.println("indtast tid: ");
+//                int tid = scanner.nextInt();
+//                System.out.println("indtast placering");
+//                int placering = scanner.nextInt();
+
+
                 if (konkuEllerMotionist.equals("motionist")) {
                     motionistEllerKonku = true;
+                    System.out.println("Indtast svømmedisciplin(butterfly, crawl, rygcrawl og brystsvømning): ");
+                    String svømmeDisciplin = scanner.nextLine();
+                    System.out.println("indtast stævne: ");
+                    String stævne = scanner.nextLine();
+                    System.out.println("indtast tid: ");
+                    int tid = scanner.nextInt();
+                    System.out.println("indtast placering");
+                    int placering = scanner.nextInt();
+
 
                 }
 
-                if (motionistEllerKonku) {
-                    KonkurrenceSvømmer konkurrenceSvømmer = new KonkurrenceSvømmer();
-                    konkurrenceSvømmer.svømmestart();
-                } else {
-                    System.out.println("Motionist chosen. No competitive swimming details needed.");
-
-
-                }
-                boolean restance = false;
-
-
-                Controller.addMedlem(navn, køn, fødselsDato, telefonNummer, medlemsType, juniorEllerSenior, motionistEllerKonku,restance);
-
-                System.out.println("\nMedlem blev tilføjet");
+//                if (motionistEllerKonku) {
+//                    KonkurrenceSvømmer konkurrenceSvømmer = new KonkurrenceSvømmer();
+//                    konkurrenceSvømmer.svømmestart();
+//                } else {
+//                    System.out.println("Motionist chosen. No competitive swimming details needed.");
+//
+//
+//                }
+//                boolean restance = false;
+//
+//
+//                Controller.addMedlem(navn, køn, fødselsDato, telefonNummer, medlemsType, juniorEllerSenior, motionistEllerKonku,restance);
+//
+//                System.out.println("\nMedlem blev tilføjet");
 
 
             }

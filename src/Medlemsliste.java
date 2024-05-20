@@ -30,10 +30,11 @@ public class Medlemsliste {
 
         // Write each movie to the CSV file
         for (Medlem medlem : medlemListe) {
-            bw.write(String.format("%s,%s,%d,%d,%s,%b,%b,%b",
+            bw.write(String.format("%s,%s,%d,%d,%s,%b,%b,%b,%s,%s,%d,%d",
                     medlem.getNavn(), medlem.getKøn(), medlem.getFødselsDato(),
                     medlem.getTelefonNummer(), medlem.getMedlemsType(),
-                    medlem.isJuniorEllerSenior(), medlem.isMotionistEllerKonku(),medlem.getRestance()));
+                    medlem.isJuniorEllerSenior(), medlem.isMotionistEllerKonku(),medlem.getRestance(),
+                    medlem.getSvømmeDisciplin(), medlem.getStævne(),medlem.getTid(), medlem.getPlacering()));
             bw.newLine();
         }
 
@@ -44,8 +45,8 @@ public class Medlemsliste {
         System.out.println("Opdateret medlemsinfo er nu gemt! :)");
     }
 
-    public void addMedlem(String navn, String køn, int fødselsdato, int telefonNummer, String medlemstype, boolean juniorEllerSenior, boolean motionistEllerKonku, boolean restance) {
-        medlemListe.add(new Medlem(navn, køn, fødselsdato, telefonNummer, medlemstype, juniorEllerSenior, motionistEllerKonku,restance));
+    public void addMedlem(String navn, String køn, int fødselsdato, int telefonNummer, String medlemstype, boolean juniorEllerSenior, boolean motionistEllerKonku, boolean restance, String svømmeDisciplin, String stævne, int tid, int placering) {
+        medlemListe.add(new Medlem(navn, køn, fødselsdato, telefonNummer, medlemstype, juniorEllerSenior, motionistEllerKonku,restance,svømmeDisciplin,stævne,tid,placering));
 
     }
 

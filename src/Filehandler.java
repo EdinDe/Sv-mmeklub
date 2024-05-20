@@ -19,7 +19,7 @@ public class Filehandler {
                         (Integer.parseInt(values[3])), // film længde
                         (values[4]),
                         Boolean.parseBoolean(values[5])
-                ,Boolean.parseBoolean(values[6]),Boolean.parseBoolean(values[7]));
+                ,Boolean.parseBoolean(values[6]),Boolean.parseBoolean(values[7]),(values[8]),(values[9]),(Integer.parseInt(values[10])),(Integer.parseInt(values[11])));
 
                 medlemListe.add(medlem);
 
