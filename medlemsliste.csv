@@ -1,6 +1,8 @@
-hej,hun,20071884,20202020,passiv,false,false,true,asdasd,asdasd,2,2
-ben,kvinde,20071884,10000000,aktiv,false,false,true,asdasd,asdasd,2,2
-enger,mand,20072003,10000000,passiv,false,false,false,asdasd,asdasd,2,2
-abe,kat,12122010,2993939,aktiv,true,true,true,asdasd,asdasd,2,2
-bigitte,kvinde,20071950,93900012,aktiv,false,true,false,asdasd,asdasd,2,2
-anders,han,20032017,20202020,passiv,true,true,true,asdasd,asdasd,2,2
+hej,hun,20071884,20202020,passiv,false,false,true,Crawl,VM1998,30,2
+ben,kvinde,20071884,10000000,aktiv,false,false,true,Crawl,Qatar 1425,35,2
+enger,mand,20072003,10000000,passiv,false,false,false,Crawl,DGI Byen,32,2
+abe,kat,12122010,2993939,aktiv,true,true,true,Crawl,Fisketorvet,45,2
+bigitte,kvinde,20071950,93900012,aktiv,false,true,false,Crawl,Albanien,209,2
+anders,han,20032017,20202020,passiv,true,true,true,Crawl,Bermuda Trianglen,11,2
+Salem,kvinde,20032004,93939393,aktiv,false,false,false,Crawl,VM2024,29,1
+Carl,Mand,3062003,9393939,aktiv,false,true,false,intet,intet,1000,100

@@ -8,6 +8,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.time.Period;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class Medlemsliste {
@@ -57,6 +60,41 @@ public class Medlemsliste {
         }
         return locallisteAfMedlemmer;
     }
+
+    public ArrayList<String> top5Svømmere(String svømmeDisciplin) {
+
+
+        List<Medlem> sortedMedlemmer = medlemListe.stream()
+                .filter(medlem -> medlem.getSvømmeDisciplin().equalsIgnoreCase(svømmeDisciplin))
+                .sorted(Comparator.comparingInt(Medlem::getTid))
+                .collect(Collectors.toList());
+
+
+        ArrayList<String> top5Svømmerelokal = new ArrayList<>();
+
+
+        for (int i = 0; i < Math.min(sortedMedlemmer.size(), 5); i++) {
+            Medlem medlem = sortedMedlemmer.get(i);
+            top5Svømmerelokal.add(medlem.getNavn() + ". Tid i sekunder: " + medlem.getTid() + " Stævne: " + medlem.getStævne() + "\n");
+        }
+
+        return top5Svømmerelokal;
+    }
+        /*ArrayList<String> top5Svømmerelokal = new ArrayList<>();
+        int i = 0;
+        for (Medlem medlem : medlemListe) {
+
+
+            if (medlem.getSvømmeDisciplin().equalsIgnoreCase(svømmeDisciplin) && i <= 5) {
+                top5Svømmerelokal.add(medlemListe.get(i).getNavn() + " " + medlemListe.get(i).getTid());
+
+                i++;
+
+            }
+        }
+        return top5Svømmerelokal;
+
+    }*/
     public Medlem findMedlemByName(String name) {
         for (Medlem medlem : medlemListe) {
             if (medlem.getNavn().equalsIgnoreCase(name)) {
@@ -121,16 +159,16 @@ public class Medlemsliste {
     }
 
     public String showMedlemslisteSorteretEfterNavn() {
-        sorterMedlemmer(); // Sort the member list by name
+        sorterMedlemmer();
         StringBuilder result = new StringBuilder();
         result.append("Medlemsliste sorteret efter navn:\n");
 
-        // Append each member's information to the result string
+
         for (Medlem medlem : medlemListe) {
             result.append(medlem.toString()).append("\n");
         }
         return result.toString();
-    } // Add a closing curly brace for showMedlemslisteSorteretEfterNavn method
+    }
 
     public static void setMedlemListe(ArrayList<Medlem> nyMedlemListe) {
         medlemListe = nyMedlemListe;

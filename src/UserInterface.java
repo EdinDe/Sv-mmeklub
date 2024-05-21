@@ -2,6 +2,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 
@@ -91,8 +93,10 @@ public class UserInterface {
                 tilføjMedlemIRestance();
 
             }else if(tal == 11) {
+                System.out.println("Vælg svømmedisciplin: Butterfly, Crawl, Rygcrawl og Brystsvømning");
+                String svømmedisciplin = scanner.nextLine();
                 System.out.println("\nTop 5:\n");
-                //System.out.println(Controller.showTopFemListe());
+                System.out.println(saver.top5Svømmere(svømmedisciplin));
 
             }
         }
@@ -103,7 +107,8 @@ public class UserInterface {
         while (tal != 9) {
             System.out.println("\n2. Vis medlemsliste");
             System.out.println("3. Søg efter et medlem");
-            System.out.println("8. Afslut program");
+            System.out.println("9. Afslut program");
+            System.out.println("10. Se top 5 konkurrencesvømmer");
 
             tal = scanner.nextInt();
             scanner.nextLine();
@@ -126,6 +131,13 @@ public class UserInterface {
                     }
                 default:
                     System.out.println("Ugyldigt valg. Prøv igen.");
+                    break;
+
+                case 10:
+                    System.out.println("Vælg svømmedisciplin: Butterfly, Crawl, Rygcrawl og Brystsvømning");
+                    String svømmedisciplin = scanner.nextLine();
+                    System.out.println("\nTop 5:\n");
+                    System.out.println(saver.top5Svømmere(svømmedisciplin));
                     break;
             }
         }
@@ -208,29 +220,40 @@ public class UserInterface {
                 System.out.println("Er medlem motionist eller konkurrencesvømmer");
                 boolean motionistEllerKonku = false;
                 String konkuEllerMotionist = scanner.next().toLowerCase();
-//                System.out.println("Indtast svømmedisciplin(butterfly, crawl, rygcrawl og brystsvømning): ");
-//                String svømmeDisciplin = scanner.nextLine();
-//                System.out.println("indtast stævne: ");
-//                String stævne = scanner.nextLine();
-//                System.out.println("indtast tid: ");
-//                int tid = scanner.nextInt();
-//                System.out.println("indtast placering");
-//                int placering = scanner.nextInt();
 
+
+                String  svømmeDisciplin = "intet";
+                String stævne = "intet";
+                int tid = 1000;
+                int placering = 100;
 
                 if (konkuEllerMotionist.equals("motionist")) {
                     motionistEllerKonku = true;
-                    System.out.println("Indtast svømmedisciplin(butterfly, crawl, rygcrawl og brystsvømning): ");
-                    String svømmeDisciplin = scanner.nextLine();
-                    System.out.println("indtast stævne: ");
-                    String stævne = scanner.nextLine();
-                    System.out.println("indtast tid: ");
-                    int tid = scanner.nextInt();
-                    System.out.println("indtast placering");
-                    int placering = scanner.nextInt();
+                    svømmeDisciplin = "intet";
+                    stævne = "intet";
+                    tid = 1000;
+                    placering = 100;
 
+
+                }else{
+                    System.out.println("Indtast svømmedisciplin(butterfly, crawl, rygcrawl og brystsvømning): ");
+                    svømmeDisciplin = scanner.nextLine();
+                    scanner.nextLine();
+                    System.out.println("indtast stævne: ");
+                    stævne = scanner.nextLine();
+                    System.out.println("indtast tid i sekunder: ");
+                    tid = scanner.nextInt();
+                    System.out.println("indtast placering");
+                    placering = scanner.nextInt();
 
                 }
+                boolean restance = false;
+
+
+                Controller.addMedlem(navn, køn, fødselsDato, telefonNummer, medlemsType, juniorEllerSenior, motionistEllerKonku,restance,svømmeDisciplin,stævne,tid,placering);
+
+                System.out.println("\nMedlem blev tilføjet");
+
 
 //                if (motionistEllerKonku) {
 //                    KonkurrenceSvømmer konkurrenceSvømmer = new KonkurrenceSvømmer();
