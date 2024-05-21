@@ -153,8 +153,8 @@ public class UserInterface {
                     scanner.nextLine();
 
                     switch (tal) {
-                        case 7:
-                            // Se forventet kontingent
+                        case 1:
+                            saver.beregnTotalIndbetalteKontingenter();
                             break;
                         case 9:
                             System.out.println("Programmet blev afsluttet");
